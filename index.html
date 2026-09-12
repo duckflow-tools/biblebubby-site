@@ -3,47 +3,40 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Learn the Bible, one scene at a time, with short readings and explanations that help it make sense.">
+  <meta name="description" content="Closer to God can start here. Find a little more understanding, and a little more room for God in your day, with BibleBubby.">
   <meta name="theme-color" content="#ffffff">
-  <title>BibleBubby — Learn the Bible, one scene at a time</title>
+  <title>BibleBubby — Closer to God can start here</title>
   <link rel="stylesheet" href="styles.css">
   <script type="module" src="motion.mjs"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header wrap">
-    <a class="wordmark" href="#main">BibleBubby<span aria-hidden="true">.</span></a>
-    <nav aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="#support">Support</a></nav>
-  </header>
+  <header class="site-header wrap"><a class="wordmark" href="#main">BibleBubby<span aria-hidden="true">.</span></a></header>
   <main id="main">
-    <section class="hero wrap" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">A little reading. A deeper understanding.</p>
-        <h1 id="hero-title">Learn the Bible,<br>one scene<br>at a time.</h1>
-        <p class="promise">Short readings and clear explanations help the Bible make sense, starting at Genesis 1.</p>
-        <!-- Replace this non-interactive placeholder with Apple's official badge
-             and the verified App Store listing URL when Kyle publishes the app. -->
-        <div class="store-badge" role="note" aria-label="App Store link coming soon"><img src="images/app-store-badge.svg" width="180" height="60" alt="Download on the App Store"></div>
-        <p class="platform-note">For iPhone. App Store link coming soon.</p>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy wrap">
+        <h1 id="hero-title">Closer to God<br>can start here.</h1>
+        <p class="promise">Find a little more understanding, and a little more room for God in your day.</p>
+        <div class="download">
+          <a class="download-button" href="https://apps.apple.com/app/id6802094254"><svg viewBox="0 0 24 28" width="22" height="26" aria-hidden="true"><path fill="currentColor" d="M19.1 14.8c0-3 2.5-4.5 2.6-4.6-1.4-2.1-3.6-2.4-4.4-2.4-1.9-.2-3.7 1.1-4.7 1.1-1 0-2.5-1.1-4.1-1.1-2.1 0-4.1 1.3-5.2 3.2-2.2 3.8-.6 9.5 1.5 12.5 1 1.5 2.2 3.1 3.8 3 1.5-.1 2.1-1 4-1s2.4 1 4.1 1c1.7 0 2.7-1.5 3.7-3 1.2-1.7 1.7-3.4 1.7-3.5-.1 0-3-1.2-3-5.2ZM16 5.8c.8-1 1.4-2.4 1.2-3.8-1.2.1-2.7.8-3.6 1.8-.8.9-1.5 2.4-1.3 3.7 1.4.1 2.8-.7 3.7-1.7Z"/></svg>Download on iPhone</a>
+          <figure class="qr"><img src="images/app-store-qr.png" width="296" height="296" alt="QR code for the same iPhone download"><figcaption>Scan with your phone</figcaption></figure>
+        </div>
       </div>
-      <div class="hero-stage">
-        <div class="stage-orbit" aria-hidden="true"></div>
-        <img class="phone" id="hero-phone" src="images/home-phone.png" width="1200" height="1600" alt="BibleBubby on iPhone: the Home path climbs through green hills, with Creation begins ready to start." fetchpriority="high">
-        <div class="bubby" id="bubby-stage"><img id="bubby-static" src="images/bubby.svg" width="1024" height="1024" alt="Bubby, your Bible reading companion."><canvas id="bubby-idle" width="512" height="512" aria-hidden="true" hidden></canvas></div>
-        <span class="hello" aria-hidden="true">Let's begin.</span>
+      <div class="hero-stage" role="img" aria-label="Bubby welcomes you to a quiet world of olive trees and a winding path through the hills.">
+        <img class="plate sky" data-depth="1" src="images/world/sky.png" width="2400" height="1600" alt="" fetchpriority="high">
+        <img class="plate" data-depth="0.7" src="images/world/far-hills.png" width="2400" height="1600" alt="">
+        <div class="near-layer" data-depth="0.35">
+          <img class="plate" src="images/world/near-path.png" width="2400" height="1600" alt="">
+          <div class="bubby" id="bubby-stage"><img id="bubby-static" src="images/bubby.svg" width="1024" height="1024" alt=""><canvas id="bubby-idle" width="512" height="512" aria-hidden="true" hidden></canvas></div>
+        </div>
+        <img class="plate" data-depth="0.1" src="images/world/foreground.png" width="2400" height="1600" alt="">
       </div>
     </section>
-    <section id="how-it-works" class="section wrap" aria-labelledby="how-title">
-      <div class="section-heading"><p class="eyebrow">How it works</p><h2 id="how-title">Small steps.<br>Scripture that stays with you.</h2></div>
-      <ol class="beats">
-        <li><div class="beat-copy"><span class="step-number" aria-hidden="true">01</span><h3>Read a little</h3><p>Start with a few verses. Notice what the passage actually says.</p></div><figure><img src="images/screen-reading.png" width="942" height="2048" alt="A Genesis 1 reading followed by a question about what the passage says about God." loading="lazy"></figure></li>
-        <li><div class="beat-copy"><span class="step-number" aria-hidden="true">02</span><h3>Understand the why</h3><p>Ask a question. Find an explanation rooted in the words you just read.</p></div><figure><img src="images/screen-explanation.png" width="942" height="2048" alt="Bubby explains that Genesis introduces God as the creator of the world." loading="lazy"></figure></li>
-        <li><div class="beat-copy"><span class="step-number" aria-hidden="true">03</span><h3>Keep taking small steps</h3><p>Come back to your path, ready for the next scene and a little more clarity.</p></div><figure><img src="images/screen-home.png" width="942" height="2048" alt="The Home ascent shows the Genesis course and the next reading, Creation begins." loading="lazy"></figure></li>
-      </ol>
+    <section class="moments wrap" aria-label="A moment inside BibleBubby">
+      <figure class="moment"><div class="phone-frame"><img src="images/screen-reading.png" width="942" height="2048" alt="The first Genesis scene: Creation begins, with Genesis 1:1–2 and a question about the passage." loading="lazy"></div><figcaption>Start where the story begins.</figcaption></figure>
+      <figure class="moment"><div class="phone-frame"><img src="images/screen-note.png" width="402" height="874" alt="A private note sheet beside the passage in Mark 8." loading="lazy"></div><figcaption>Make room for what stays with you.</figcaption></figure>
     </section>
-    <section class="pricing wrap" aria-labelledby="pricing-title"><div><p class="eyebrow">BibleBubby Max</p><h2 id="pricing-title">Room to keep learning.</h2><p>Unlimited lessons, Genesis to Revelation as books arrive.</p></div><div class="pricing-detail"><p class="pricing-line"><strong>7 days free, then $39.99/year.</strong><br>Or $8.99/month.</p><p class="billing-note">Annual trial for eligible subscribers. Prices in US dollars. Subscribe through our website with Stripe. Cancel before renewal. The Bible reader stays open without Max.</p></div></section>
-    <section id="support" class="support wrap" aria-labelledby="support-title"><div><h2 id="support-title">Contact support</h2><p>A question about BibleBubby? We're here.</p></div><a href="mailto:support@biblebubby.com">support@biblebubby.com <span aria-hidden="true">↗</span></a></section>
   </main>
-  <footer class="site-footer wrap"><a class="wordmark" href="#main">BibleBubby<span aria-hidden="true">.</span></a><p>One scene at a time.</p><div class="legal"><a href="legal/privacy.html">Privacy policy</a><a href="legal/terms.html">Terms of use</a></div></footer>
+  <footer class="site-footer wrap"><a href="mailto:support@biblebubby.com">support@biblebubby.com</a><div class="legal"><a href="legal/privacy.html">Privacy policy</a><a href="legal/terms.html">Terms of use</a></div></footer>
 </body>
 </html>
