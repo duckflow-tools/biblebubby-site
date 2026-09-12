@@ -1,0 +1,2 @@
+# Preserve the vendored runtime's upstream bytes on Windows checkouts.
+vendor/canvas_advanced.mjs -text

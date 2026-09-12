@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn the Bible, one scene at a time, with short readings and explanations that help it make sense.">
+  <meta name="theme-color" content="#ffffff">
+  <title>BibleBubby — Learn the Bible, one scene at a time</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="motion.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#main">BibleBubby<span aria-hidden="true">.</span></a>
+    <nav aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="#support">Support</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">A little reading. A deeper understanding.</p>
+        <h1 id="hero-title">Learn the Bible,<br>one scene<br>at a time.</h1>
+        <p class="promise">Short readings and clear explanations help the Bible make sense, starting at Genesis 1.</p>
+        <!-- Replace this non-interactive placeholder with Apple's official badge
+             and the verified App Store listing URL when Kyle publishes the app. -->
+        <div class="store-badge" role="note" aria-label="App Store link coming soon"><img src="images/app-store-badge.svg" width="180" height="60" alt="Download on the App Store"></div>
+        <p class="platform-note">For iPhone. App Store link coming soon.</p>
+      </div>
+      <div class="hero-stage">
+        <div class="stage-orbit" aria-hidden="true"></div>
+        <img class="phone" id="hero-phone" src="images/home-phone.png" width="1200" height="1600" alt="BibleBubby on iPhone: the Home path climbs through green hills, with Creation begins ready to start." fetchpriority="high">
+        <div class="bubby" id="bubby-stage"><img id="bubby-static" src="images/bubby.svg" width="1024" height="1024" alt="Bubby, your Bible reading companion."><canvas id="bubby-idle" width="512" height="512" aria-hidden="true" hidden></canvas></div>
+        <span class="hello" aria-hidden="true">Let's begin.</span>
+      </div>
+    </section>
+    <section id="how-it-works" class="section wrap" aria-labelledby="how-title">
+      <div class="section-heading"><p class="eyebrow">How it works</p><h2 id="how-title">Small steps.<br>Scripture that stays with you.</h2></div>
+      <ol class="beats">
+        <li><div class="beat-copy"><span class="step-number" aria-hidden="true">01</span><h3>Read a little</h3><p>Start with a few verses. Notice what the passage actually says.</p></div><figure><img src="images/screen-reading.png" width="942" height="2048" alt="A Genesis 1 reading followed by a question about what the passage says about God." loading="lazy"></figure></li>
+        <li><div class="beat-copy"><span class="step-number" aria-hidden="true">02</span><h3>Understand the why</h3><p>Ask a question. Find an explanation rooted in the words you just read.</p></div><figure><img src="images/screen-explanation.png" width="942" height="2048" alt="Bubby explains that Genesis introduces God as the creator of the world." loading="lazy"></figure></li>
+        <li><div class="beat-copy"><span class="step-number" aria-hidden="true">03</span><h3>Keep taking small steps</h3><p>Come back to your path, ready for the next scene and a little more clarity.</p></div><figure><img src="images/screen-home.png" width="942" height="2048" alt="The Home ascent shows the Genesis course and the next reading, Creation begins." loading="lazy"></figure></li>
+      </ol>
+    </section>
+    <section class="pricing wrap" aria-labelledby="pricing-title"><div><p class="eyebrow">BibleBubby Max</p><h2 id="pricing-title">Room to keep learning.</h2><p>Unlimited lessons, Genesis to Revelation as books arrive.</p></div><div class="pricing-detail"><p class="pricing-line"><strong>7 days free, then $39.99/year.</strong><br>Or $8.99/month.</p><p class="billing-note">Annual trial for eligible subscribers. Prices in US dollars. Subscribe through our website with Stripe. Cancel before renewal. The Bible reader stays open without Max.</p></div></section>
+    <section id="support" class="support wrap" aria-labelledby="support-title"><div><h2 id="support-title">Contact support</h2><p>A question about BibleBubby? We're here.</p></div><a href="mailto:support@biblebubby.com">support@biblebubby.com <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="site-footer wrap"><a class="wordmark" href="#main">BibleBubby<span aria-hidden="true">.</span></a><p>One scene at a time.</p><div class="legal"><a href="legal/privacy.html">Privacy policy</a><a href="legal/terms.html">Terms of use</a></div></footer>
+</body>
+</html>
