@@ -1,34 +1,51 @@
 # BibleBubby landing page
 
-WEB3 is a standalone page: one outcome headline, one purple glass iPhone download, a flat green world at dawn, live Bubby, and one Genesis phone on the path. Local Rubik and vendored Rive 2.41.0 need no framework, external script, build service or backend.
+WEB4 is a standalone daylight landing page with a Blender world and Bubby sculpt, white Rubik headline and supporting copy, one purple glass download capsule, a desktop QR, one Genesis phone on the path, and support/legal links. No framework, backend or external script is required.
 
 ## Publish
 
-Copy this entire folder, including images, vendor, legal, motion.mjs and .nojekyll, to the separate GitHub Pages repository. All local requests are relative, including the Rive WASM mapping. Serve .mjs as JavaScript and .wasm as application/wasm. A file:// preview can block Rive fetches; use HTTP. Kyle owns publication and the domain. No site was published by this lane.
+Copy this entire folder, including images, legal, motion.mjs and .nojekyll, to the separate GitHub Pages repository. All requests are relative. Serve .mjs as JavaScript, .webm as video/webm and .mp4 as video/mp4, ideally with byte-range support. Use HTTP for local viewing. Kyle owns publication; this lane has not deployed the page.
 
-The single download capsule and desktop QR target https://apps.apple.com/app/id6802094254. The QR is hidden below 700 px. Its existing local generator is assets/web/landing/generate-qr.py; if the target changes, update the link, regenerate and decode the QR. Legal HTML is linked unchanged. Support is support@biblebubby.com.
+The capsule and QR both target https://apps.apple.com/app/id6802094254. The QR appears from 700 px. Legal content is unchanged. Support is support@biblebubby.com. The Genesis phone uses the existing reading capture; it is historical native evidence.
 
-## Source artwork
+## Blender sources
 
-The brief’s suggested roadmap/images/ui folders were inspected. The reusable Home ascent artwork actually lives under assets/brand/credo/home on this host. Four SVG plates in images/world replace the retired Blender PNGs. docs/design/explorations/web-landing/v3/build-world.py reproduces them from the real background-hills.svg contours and cloud, plus vector/landmark-1.svg trees. The winding path and foreground contour are drawn as simple flat extensions; the natural tree colours are preserved. The sky gradient and edge haze are CSS. No imagegen or 3D rendering was used.
+The editable sources are assets/web/landing/build-v4.py and prepare-bubby-v4.py. The latter samples the exact outlines, colors and facial landmarks in assets/brand/credo/pegasus.svg. The result is a rounded front-view sculpt with real mesh depth. The second attempt joins head and body into a continuous cream surface; the first attempt remains in evidence. This is the Blender character path, with no Rive fallback or rig edits.
 
-images/bubby.riv remains the WEB2 export: Bubby C artboard, Bubby machine, greet binding, with the existing approved SVG fallback. The Genesis image is byte-identical to docs/overview/captures/walk2-2026-09-12/05-chunk-top.png. It is historical native evidence, not a new build capture. The superseded second phone and four Blender PNGs were removed from this publishing folder.
+assets/web/landing/v4 contains bubby-v4.blend (keyed breathing and blink), daylight-world.blend, a 2400 x 1350 transparent hero still, both attempts and camera registration. Both Blender files are under 4 MB. The publishing images/v4 folder contains registered sky and hill plates, the character still and both video formats. Old Rive and SVG assets remain available as historical sources but are not loaded by WEB4.
 
-## Motion and accessibility
+Reproduce on native Windows PowerShell with Blender 5.1.2 and FFmpeg 8.1:
 
-Four scenery depths move by CSS transform, capped at 24 px; Bubby follows the path depth. The Rive rig breathes, greets once after 1.2 seconds of visible playback, then idles. It pauses when hidden or offscreen. The phone floats 5 px over six seconds. No other continuous motion is present.
+```powershell
+python assets/web/landing/prepare-bubby-v4.py
+& 'C:/Program Files/Blender Foundation/Blender 5.1/blender.exe' -b -t 8 --python assets/web/landing/build-v4.py -- rig
+& 'C:/Program Files/Blender Foundation/Blender 5.1/blender.exe' -b -t 8 --python assets/web/landing/build-v4.py -- world
+& 'C:/Program Files/Blender Foundation/Blender 5.1/blender.exe' -b -t 8 --python assets/web/landing/build-v4.py -- animation
+& ./assets/web/landing/encode-v4.ps1
+```
 
-Reduced motion shows static Bubby, removes parallax and phone float, and disables the pressed-button translation. Starting reduced skips Rive/WASM downloads; live preference changes work in both directions. A failed rig download or disabled JavaScript preserves the fallback and download. Keyboard focus and a skip link remain available. Text uses dark ink; the button label’s conservative contrast is 4.67:1, supporting text at least 4.74:1 across the sky endpoints, headline at least 6.60:1, and caption 14.85:1.
+Host Python needs numpy, scipy, shapely, svgpathtools and Pillow. The generated mesh cache and PNG sequence are ignored and reproducible. No dependencies are installed into or substituted for node_modules.
 
-## Reproduce the evidence
+## Motion and fallback
 
-From the app worktree on native Windows PowerShell:
+The idle is six seconds, 144 frames at 24 fps, with two gentle breaths and one quarter-second blink centered at 4.25 seconds. The primary 512-square VP9 WebM has alpha. H.264 stores RGB in its left 512-square half and a grayscale alpha matte in its right half; the page canvas reconstructs transparency. It is an authored Blender animation, not a screen recording. This fallback is intentional because ordinary H.264 cannot encode transparency. Playback tests decoded VP9 alpha and switches to H.264 when it is discarded or the primary request fails.
 
-- python docs/design/explorations/web-landing/v3/build-world.py
-- python docs/design/explorations/web-landing/v3/check-assets.py
-- node --test docs/design/explorations/web-landing/v3/motion-check.mjs
-- node docs/design/explorations/web-landing/v3/capture-page.mjs
+Only the sky and hill plates receive scroll parallax, capped at 16 px and 4.8 px. Bubby stays anchored and the phone is still. Reduced motion starts with the PNG and skips both videos. Live preference changes restore the still, and hidden/offscreen playback pauses. Failed media and disabled JavaScript preserve the still and download action.
 
-The asset check uses the host’s Pillow and zxing-cpp. Capture uses isolated headless Edge and a temporary loopback server, both closed on exit. It checks 390 and 1280 widths in light mode, overflow, local image loads, the single download, desktop-only QR, actual Rive pixel changes, phone movement, four scroll depths, reduced motion, blocked-rig fallback and disabled JavaScript. No interactive browser or review interface is opened. The reference study is separately reproducible with study-capture.mjs.
+## Evidence and current limits
 
-Viewport and full-page PNGs, reduced-motion evidence, sampled Bubby frames and structured check summaries live under docs/design/explorations/web-landing/v3. Every image is below 5 MB. Earlier WEB1/WEB2 layout and plate checks describe superseded versions; run the v3 checks for this page.
+Run these headless checks from the app worktree:
+
+```powershell
+node --test docs/design/explorations/web-landing/v4/motion-check.mjs
+python docs/design/explorations/web-landing/v4/check-assets.py
+python docs/design/explorations/web-landing/v4/check-media.py
+node docs/design/explorations/web-landing/v4/capture-page.mjs
+python docs/design/explorations/web-landing/v4/check-browser-frames.py
+```
+
+The v4 evidence directory contains the side-by-side, idle contact sheet and decoded measurements. The model silhouette overlaps the registered master by 98.1%. This is an author comparison, not independent visual acceptance.
+
+The v4 directory contains actual 390 × 844 and 1280 × 900 viewport captures, full-page captures, reduced-motion and fallback captures, and 28 PNG motion frames. The local headless Edge evidence pass was authorized by Fable on September 12 at 21:15 and is now permitted by AGENTS.md. The capture script follows WEB3: isolated native headless Edge, a temporary profile and a loopback server under the `/landing/` prefix. It closes its browser and server. It loads no external page or script. Direct file screenshots were also checked; use the loopback script for ES-module and video playback evidence.
+
+Both widths have one download, loaded images and no horizontal overflow; the phone begins below the first viewport. The final evidence pass fades the sky plate edges, places white haze below the copy, and moves the mobile phone below 844 px. Six sampled sky pixels beside supporting copy give white contrast of at least 4.70:1. Browser assertions cover VP9 alpha, actual looping, live and initial reduced motion, re-enabling motion, offscreen pause, H.264 fallback, total media failure and disabled JavaScript. The PNG trace confirms changing character pixels and stationary scenery. Headless Edge does not certify Safari or native iPhone performance; independent visual acceptance and publication remain separate.
