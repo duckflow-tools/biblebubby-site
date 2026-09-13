@@ -1,31 +1,34 @@
 # BibleBubby landing page
 
-WEB2 follows Kyle's concept 02: a quiet world, an outcome headline, and one iPhone download. This standalone static folder includes local Rubik, four Blender plates, the exported Bubby rig, and Rive 2.41.0. No external script, framework, build step, or backend is needed.
+WEB3 is a standalone page: one outcome headline, one purple glass iPhone download, a flat green world at dawn, live Bubby, and one Genesis phone on the path. Local Rubik and vendored Rive 2.41.0 need no framework, external script, build service or backend.
 
 ## Publish
 
-Copy this entire folder, including images/world, vendor, legal, motion.mjs, and .nojekyll, into the separate static publishing repository. Serve over HTTPS with .mjs as JavaScript and .wasm as application/wasm. Relative URLs also work under a repository prefix. Opening index.html directly as a file can block Rive fetches and leave the static fallback visible.
+Copy this entire folder, including images, vendor, legal, motion.mjs and .nojekyll, to the separate GitHub Pages repository. All local requests are relative, including the Rive WASM mapping. Serve .mjs as JavaScript and .wasm as application/wasm. A file:// preview can block Rive fetches; use HTTP. Kyle owns publication and the domain. No site was published by this lane.
 
-Kyle owns publication and the Squarespace domain. Point the domain at the selected static host after reviewing the files. A Squarespace code-injection fragment alone is insufficient unless the full asset tree is hosted at matching paths. Preserve the support mailbox's mail records.
+The single download capsule and desktop QR target https://apps.apple.com/app/id6802094254. The QR is hidden below 700 px. Its existing local generator is assets/web/landing/generate-qr.py; if the target changes, update the link, regenerate and decode the QR. Legal HTML is linked unchanged. Support is support@biblebubby.com.
 
-The download button and desktop QR both target https://apps.apple.com/app/id6802094254, the authorized placeholder listing. Public listing availability remains Kyle's publication check. The QR is generated locally by assets/web/landing/generate-qr.py using Python qrcode 8.2, with a four-module quiet zone. If the listing changes, update the anchor and generator, regenerate the image, and decode it again. Existing legal documents are linked unchanged.
+## Source artwork
 
-## Assets and motion
+The brief’s suggested roadmap/images/ui folders were inspected. The reusable Home ascent artwork actually lives under assets/brand/credo/home on this host. Four SVG plates in images/world replace the retired Blender PNGs. docs/design/explorations/web-landing/v3/build-world.py reproduces them from the real background-hills.svg contours and cloud, plus vector/landmark-1.svg trees. The winding path and foreground contour are drawn as simple flat extensions; the natural tree colours are preserved. The sky gradient and edge haze are CSS. No imagegen or 3D rendering was used.
 
-Editable source: assets/web/landing/world-v2.blend (312,276 bytes). Blender 5.1.2 runs build-world-v2.py in background mode to reproduce the four 2400 by 1600 transparent plates. There is no baked character in the scene. Each PNG is under 5 MB; the scene is under 50 MB.
+images/bubby.riv remains the WEB2 export: Bubby C artboard, Bubby machine, greet binding, with the existing approved SVG fallback. The Genesis image is byte-identical to docs/overview/captures/walk2-2026-09-12/05-chunk-top.png. It is historical native evidence, not a new build capture. The superseded second phone and four Blender PNGs were removed from this publishing folder.
 
-The Bubby C artboard and Bubby machine in images/bubby.riv supply the hero. The exported greet binding fires once after 1.2 seconds of visible animation, then returns to idle. The approved SVG is the static fallback. The loader maps its requested canvas_advanced.wasm filename to the vendored rive.wasm; preserve that mapping.
+## Motion and accessibility
 
-Scroll moves only scenery with CSS transforms, at four depths, capped at 24 px. Bubby shares the near plate's transform. Reduced motion shows the static character and disables every plate transform, including live preference changes. Starting reduced skips runtime and rig downloads; enabling motion later loads them. Offscreen and hidden-page animation pauses. Nothing else animates.
+Four scenery depths move by CSS transform, capped at 24 px; Bubby follows the path depth. The Rive rig breathes, greets once after 1.2 seconds of visible playback, then idles. It pauses when hidden or offscreen. The phone floats 5 px over six seconds. No other continuous motion is present.
 
-The two phone frames contain unchanged historical native screenshots. screen-reading.png comes from docs/overview/captures/walk2-2026-09-12/05-chunk-top.png. screen-note.png comes from evidence/TOUR1/frames/062-reader-note.png; the note sheet covers the older reader toolbar and page counter. These are genuine app captures, not generated UI or current native-build certification.
+Reduced motion shows static Bubby, removes parallax and phone float, and disables the pressed-button translation. Starting reduced skips Rive/WASM downloads; live preference changes work in both directions. A failed rig download or disabled JavaScript preserves the fallback and download. Keyboard focus and a skip link remain available. Text uses dark ink; the button label’s conservative contrast is 4.67:1, supporting text at least 4.74:1 across the sky endpoints, headline at least 6.60:1, and caption 14.85:1.
 
-## Evidence and checks
+## Reproduce the evidence
 
-Run from the app worktree on native Windows:
+From the app worktree on native Windows PowerShell:
 
-- node --test docs/design/explorations/web-landing/v2/motion-check.mjs
-- python docs/design/explorations/web-landing/v2/check-assets.py
-- node docs/design/explorations/web-landing/v2/capture-page.mjs
+- python docs/design/explorations/web-landing/v3/build-world.py
+- python docs/design/explorations/web-landing/v3/check-assets.py
+- node --test docs/design/explorations/web-landing/v3/motion-check.mjs
+- node docs/design/explorations/web-landing/v3/capture-page.mjs
 
-The asset check needs Pillow and zxing-cpp 3.1.1. Capture uses isolated headless Edge and a temporary loopback server, closed in its finally block. It checks the real browser runtime, overflow, single download action, responsive QR, reduced motion, blocked-rig fallback, and disabled JavaScript. Viewport screenshots at 390 by 844 and 1280 by 900, full-page images, sampled rig frames, and motion summaries are in docs/design/explorations/web-landing/v2. No interactive review page is opened. Earlier WEB1 checks describe the superseded page.
+The asset check uses the host’s Pillow and zxing-cpp. Capture uses isolated headless Edge and a temporary loopback server, both closed on exit. It checks 390 and 1280 widths in light mode, overflow, local image loads, the single download, desktop-only QR, actual Rive pixel changes, phone movement, four scroll depths, reduced motion, blocked-rig fallback and disabled JavaScript. No interactive browser or review interface is opened. The reference study is separately reproducible with study-capture.mjs.
+
+Viewport and full-page PNGs, reduced-motion evidence, sampled Bubby frames and structured check summaries live under docs/design/explorations/web-landing/v3. Every image is below 5 MB. Earlier WEB1/WEB2 layout and plate checks describe superseded versions; run the v3 checks for this page.

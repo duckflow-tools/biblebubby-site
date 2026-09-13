@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Closer to God can start here. Find a little more understanding, and a little more room for God in your day, with BibleBubby.">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#B89AEF">
   <title>BibleBubby — Closer to God can start here</title>
   <link rel="stylesheet" href="styles.css">
   <script type="module" src="motion.mjs"></script>
@@ -22,19 +22,16 @@
           <figure class="qr"><img src="images/app-store-qr.png" width="296" height="296" alt="QR code for the same iPhone download"><figcaption>Scan with your phone</figcaption></figure>
         </div>
       </div>
-      <div class="hero-stage" role="img" aria-label="Bubby welcomes you to a quiet world of olive trees and a winding path through the hills.">
-        <img class="plate sky" data-depth="1" src="images/world/sky.png" width="2400" height="1600" alt="" fetchpriority="high">
-        <img class="plate" data-depth="0.7" src="images/world/far-hills.png" width="2400" height="1600" alt="">
-        <div class="near-layer" data-depth="0.35">
-          <img class="plate" src="images/world/near-path.png" width="2400" height="1600" alt="">
-          <div class="bubby" id="bubby-stage"><img id="bubby-static" src="images/bubby.svg" width="1024" height="1024" alt=""><canvas id="bubby-idle" width="512" height="512" aria-hidden="true" hidden></canvas></div>
+      <div class="hero-stage">
+        <div class="landscape" aria-hidden="true">
+          <img class="plate" data-depth="1" src="images/world/sky.svg" width="1440" height="1200" alt="">
+          <img class="plate" data-depth="0.7" src="images/world/far-hills.svg" width="1440" height="1200" alt="">
+          <img class="plate" data-depth="0.35" src="images/world/near-path.svg" width="1440" height="1200" alt="">
+          <img class="plate" data-depth="0.1" src="images/world/foreground.svg" width="1440" height="1200" alt="">
         </div>
-        <img class="plate" data-depth="0.1" src="images/world/foreground.png" width="2400" height="1600" alt="">
+        <div class="bubby" id="bubby-stage" data-depth="0.35" role="img" aria-label="Bubby welcomes you on a winding path through green hills."><img id="bubby-static" src="images/bubby.svg" width="1024" height="1024" alt=""><canvas id="bubby-idle" width="512" height="512" aria-hidden="true" hidden></canvas></div>
+        <figure class="moment" aria-label="A moment inside BibleBubby"><div class="phone-frame"><img src="images/screen-reading.png" width="942" height="2048" alt="The first Genesis scene: Creation begins, with Genesis 1:1�2 and a question about the passage." loading="lazy"></div><figcaption>Start where the story begins.</figcaption></figure>
       </div>
-    </section>
-    <section class="moments wrap" aria-label="A moment inside BibleBubby">
-      <figure class="moment"><div class="phone-frame"><img src="images/screen-reading.png" width="942" height="2048" alt="The first Genesis scene: Creation begins, with Genesis 1:1–2 and a question about the passage." loading="lazy"></div><figcaption>Start where the story begins.</figcaption></figure>
-      <figure class="moment"><div class="phone-frame"><img src="images/screen-note.png" width="402" height="874" alt="A private note sheet beside the passage in Mark 8." loading="lazy"></div><figcaption>Make room for what stays with you.</figcaption></figure>
     </section>
   </main>
   <footer class="site-footer wrap"><a href="mailto:support@biblebubby.com">support@biblebubby.com</a><div class="legal"><a href="legal/privacy.html">Privacy policy</a><a href="legal/terms.html">Terms of use</a></div></footer>
